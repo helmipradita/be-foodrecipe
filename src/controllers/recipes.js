@@ -78,7 +78,7 @@ const recipesControllers = {
         );
       }
 
-      insertRecipe(dataRecipe);
+      await insertRecipe(dataRecipe);
       response(res, 200, true, dataRecipe, 'insert recipe success');
     } catch (error) {
       console.log(error);
