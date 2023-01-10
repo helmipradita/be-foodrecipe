@@ -46,8 +46,8 @@ const selectRecipes = (id) => {
     Pool.query(
       `SELECT recipes.id, recipes.title, recipes.ingredients, recipes.photo, 
         recipes.videos, recipes.user_id, users.name AS author,
-        to_char( created_at, 'day, DD Month YYYY' ) AS created_at, 
-        to_char( updated_at, 'day, DD Month YYYY' ) AS updated_at
+        to_char( recipes.created_at, 'day, DD Month YYYY' ) AS created_at, 
+        to_char( recipes.updated_at, 'day, DD Month YYYY' ) AS updated_at
       FROM recipes AS recipes
       INNER JOIN users AS users ON recipes.user_id = users.id
       WHERE users.id='${id}'
@@ -68,8 +68,8 @@ const selectDetailRecipes = (id) => {
     Pool.query(
       `SELECT recipes.id, recipes.title, recipes.ingredients, recipes.photo, 
         recipes.videos, recipes.user_id, users.name AS author,
-        to_char( created_at, 'day, DD Month YYYY' ) AS created_at, 
-        to_char( updated_at, 'day, DD Month YYYY' ) AS updated_at
+        to_char( recipes.created_at, 'day, DD Month YYYY' ) AS created_at, 
+        to_char( recipes.updated_at, 'day, DD Month YYYY' ) AS updated_at
       FROM recipes AS recipes
       INNER JOIN users AS users ON recipes.user_id = users.id
       WHERE recipes.id='${id}'`,
