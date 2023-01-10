@@ -15,13 +15,13 @@ const recipesControllers = {
   getAllRecipes: async (req, res, next) => {
     try {
       const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 6;
-      const sortBy = req.query.sortBy || 'name';
+      const limit = parseInt(req.query.limit) || 4;
+      const sortBy = req.query.sortBy || 'updated_at';
       const sortOrder = req.query.sortOrder || 'DESC';
       const search = req.query.search || '';
       const offset = (page - 1) * limit;
 
-      const data = await selectAllRecipes({
+      const result = await selectAllRecipes({
         search,
         sortBy,
         sortOrder,
@@ -41,12 +41,10 @@ const recipesControllers = {
         totalPage,
       };
 
-      const result = { ...data, pagination };
-
-      response(res, 200, true, result, 'Get data success');
+      response(res, 200, true, result.rows, 'get recipes success', pagination);
     } catch (error) {
       console.log(error);
-      response(res, 404, false, null, ' Get data failed');
+      response(res, 404, false, null, ' get recipes failed');
     }
   },
   add: async (req, res, next) => {
