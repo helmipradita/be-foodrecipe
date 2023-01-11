@@ -16,6 +16,18 @@ const register = (data) => {
   );
 };
 
+const findEmail = (email) => {
+  return new Promise((resolve, reject) =>
+    Pool.query(`SELECT * FROM users where email='${email}'`, (err, result) => {
+      if (!err) {
+        resolve(result);
+      } else {
+        reject(err);
+      }
+    })
+  );
+};
+
 const findIdUser = (id) => {
   return new Promise((resolve, reject) =>
     Pool.query(`SELECT * FROM users where id='${id}'`, (err, result) => {
@@ -64,6 +76,7 @@ const updateProfile = (data) => {
 
 module.exports = {
   register,
+  findEmail,
   findIdUser,
   verif,
   updateProfile,

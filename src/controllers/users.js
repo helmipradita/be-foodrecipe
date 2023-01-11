@@ -1,6 +1,7 @@
 const { response } = require(`../middleware/common`);
 const {
   register,
+  findEmail,
   findIdUser,
   verif,
   updateProfile,
