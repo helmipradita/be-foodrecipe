@@ -8,7 +8,7 @@ let uploaded = multer();
 
 router.post('/:recipe_id', uploaded.array(), protect, commentControllers.add);
 router.get('/', protect, commentControllers.get);
-router.get('/:recipe_id', protect, commentControllers.getByRecipeId);
+router.get('/:recipe_id', commentControllers.getByRecipeId);
 router.put('/:id', uploaded.array(), protect, commentControllers.edit);
 router.delete('/:id', protect, commentControllers.delete);
 
