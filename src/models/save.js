@@ -58,7 +58,7 @@ const selectSave = (id) => {
     Pool.query(
       `SELECT save_recipe.id, 
         save_recipe.recipe_id, recipes.title AS recipes_name,
-        save_recipe.user_id,
+        save_recipe.user_id, recipes.photo,
         to_char( save_recipe.created_at, 'day, DD Month YYYY' ) AS created_at, 
         to_char( save_recipe.updated_at, 'day, DD Month YYYY' ) AS updated_at
       FROM save_recipe AS save_recipe
