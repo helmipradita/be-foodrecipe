@@ -1,7 +1,7 @@
 const { response } = require(`../middleware/common`);
 const {
   register,
-  findEmail,
+  findIdUser,
   verif,
   updateProfile,
 } = require(`../models/users`);
@@ -121,17 +121,10 @@ const usersControllers = {
   },
   profile: async (req, res, next) => {
     try {
-      const email = req.payload.email;
+      const user = req.payload.id;
       const {
         rows: [users],
-      } = await findEmail(email);
-
-      if (users === undefined) {
-        res.json({
-          message: 'invalid token',
-        });
-        return;
-      }
+      } = await findIdUser(user);
 
       delete users.password;
       delete users.verif;
