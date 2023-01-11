@@ -9,7 +9,7 @@ router.get('/all', recipesControllers.getAllRecipes);
 router.post('/', upload.single('photo'), protect, recipesControllers.add);
 router.get('/', protect, recipesControllers.getMyRecipe);
 router.get('/:id', recipesControllers.detailById);
-router.put('/:id', upload.single('photo'), protect, recipesControllers.edit);
+router.put('/:id', upload.single('photo'), recipesControllers.edit);
 router.delete('/:id', protect, recipesControllers.delete);
 
 module.exports = router;
