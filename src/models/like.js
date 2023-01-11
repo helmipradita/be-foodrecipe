@@ -58,7 +58,7 @@ const selectLike = (id) => {
     Pool.query(
       `SELECT like_recipe.id, 
         like_recipe.recipe_id, recipes.title AS recipes_name,
-        like_recipe.user_id,
+        like_recipe.user_id, recipes.photo,
         to_char( like_recipe.created_at, 'day, DD Month YYYY' ) AS created_at, 
         to_char( like_recipe.updated_at, 'day, DD Month YYYY' ) AS updated_at
       FROM like_recipe AS like_recipe
