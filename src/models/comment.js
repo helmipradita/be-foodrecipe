@@ -63,7 +63,7 @@ const selectCommentByRecipe = (recipe_id) => {
   return new Promise((resolve, reject) =>
     Pool.query(
       `SELECT comment_user.id, comment_user.comment, comment_user.recipe_id, 
-          comment_user.user_id, users.name AS name,
+          comment_user.user_id, users.name AS name, users.photo AS photo,
           to_char( comment_user.created_at, 'day, DD Month YYYY' ) AS created_at, 
           to_char( comment_user.updated_at, 'day, DD Month YYYY' ) AS updated_at
         FROM comment_user AS comment_user
