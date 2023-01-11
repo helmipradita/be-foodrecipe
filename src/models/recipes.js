@@ -3,9 +3,16 @@ const Pool = require(`../config/db`);
 const selectAllRecipes = ({ limit, offset, sortBy, sortOrder, search }) => {
   return new Promise((resolve, reject) =>
     Pool.query(
-      `SELECT * FROM recipes WHERE title 
-        ILIKE '%${search}%' ORDER BY ${sortBy} ${sortOrder} 
-        LIMIT ${limit} OFFSET ${offset}`,
+      `SELECT 
+        recipes.id, recipes.title, recipes.ingredients, recipes.photo, recipes.videos, 
+        recipes.user_id, users.name AS author,
+        to_char( recipes.created_at, 'day, DD Month YYYY' ) AS created_at, 
+        to_char( recipes.updated_at, 'day, DD Month YYYY' ) AS updated_at
+      FROM recipes AS recipes
+      INNER JOIN users AS users ON recipes.user_id = users.id
+      WHERE recipes.title 
+      ILIKE '%${search}%' ORDER BY ${sortBy} ${sortOrder} 
+      LIMIT ${limit} OFFSET ${offset}`,
       (err, result) => {
         if (!err) {
           resolve(result);
