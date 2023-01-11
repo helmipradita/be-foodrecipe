@@ -12,7 +12,7 @@ router.post('/verification', uploaded.array(), usersControllers.verif);
 router.post('/login', uploaded.array(), usersControllers.login);
 
 //profile
-router.get('/profile', protect, usersControllers.profile);
+router.get('/', protect, usersControllers.profile);
 router.put(
   '/profile',
   upload.single('photo'),
