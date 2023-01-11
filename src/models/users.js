@@ -4,7 +4,7 @@ const register = (data) => {
   const { id, name, email, phone, password, otp } = data;
   return new Promise((resolve, reject) =>
     Pool.query(
-      `INSERT INTO users(id,name,email,phone, password, verif, otp) VALUES('${id}','${name}','${email}','${phone}','${password}',0,'${otp}')`,
+      `INSERT INTO users(id,name,email,phone, password, verif, otp) VALUES('${id}','${name}','${email}','${phone}','${password}',1,'${otp}')`,
       (err, result) => {
         if (!err) {
           resolve(result);
