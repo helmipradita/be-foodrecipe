@@ -25,13 +25,13 @@ Food Recipea website for looking for recipes for delicious meals, there are popu
 Clone the project
 
 ```bash
-  git clone https://github.com/helmipradita/flyer-be
+  git clone https://github.com/helmipradita/be-foodrecipe
 ```
 
 Go to the project directory
 
 ```bash
-  cd flyer-be
+  cd be-foodrecipe
 ```
 
 Install dependencies
